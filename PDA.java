@@ -17,15 +17,19 @@ public class PDA
          Scanner scanner = new Scanner(System.in);
          int age = 0;
          boolean shouldContinue = true;
+         if(age == 123){
+             shouldContinue = false;
+         }
         while(shouldContinue == true){
             System.out.println("How old are you?");
            try{
             age = scanner.nextInt();
-            int LOWER = 0;
+            int LOWER = 14;
             if(age< LOWER){
-               throw new ArithmeticException(age+"is too young!!");
+               System.out.println(age+" is too young!!");
             }else{
-                System.out.println("you date as young as" +getYoungerAge(age)+ "and you can date as old as"+ getOlderAge(age));
+                System.out.println("you date as young as " +getYoungerAge(age)+ " and you can date as old as "+ getOlderAge(age));
+                System.out.println("input your age as 123 to exit the program");
             }
            } catch (InputMismatchException error) {
                System.out.println("please enter an integer");
@@ -35,8 +39,13 @@ public class PDA
     }
     public int getYoungerAge(int age){
             int lower = age;
-            lower = (lower/2) + 7;
-            return lower;
+            if(lower%2 == 0){
+                lower = (lower/2) + 7;
+                return lower;
+            }else{
+                lower= (lower/2) + 8;
+                return lower;
+            }
     }
     public int getOlderAge(int age){
         int higher =age;
